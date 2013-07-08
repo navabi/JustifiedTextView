@@ -1,6 +1,6 @@
 # JustifiedTextView for Android
 
-This project provide a view for android apps that implement justified text view.
+This project provides a view for android apps that implements justified text view.
 
 ![Screenshot](https://raw.github.com/navabi/JustifiedTextView/master/raw/JustifiedTextView.png)
 
