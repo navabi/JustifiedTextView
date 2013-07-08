@@ -2,7 +2,7 @@
 
 This project proviede a view for you that implement justified text view that.
 
-![Screenshot](https://github.com/JustifiedTextView/raw/JustifiedTextView.png)
+![Screenshot](https://github.com/navabi/JustifiedTextView/blob/master/raw/JustifiedTextView.png)
 
 Android 2.0+ support
 
@@ -11,7 +11,7 @@ Android 2.0+ support
 #### 1. Include library
 
 **Manual:**
- * [Download JAR](https://github.com/JustifiedTextView/bin/justifiedtextviewlibrary.jar)
+ * [Download JAR](https://github.com/navabi/JustifiedTextView/blob/master/raw/justifiedtextviewlibrary.jar)
  * Put the JAR in the **libs** subfolder of your Android project
 
 #### 2. Application class
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 
 
 ## License
-please inform us if you use this library ( *email:support@mohsennavabi.ir*)
+please inform us if you use this library ( navabi70@gmail.com)
 
     Copyright 2013 Mohsen Navabi
 
