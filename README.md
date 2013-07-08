@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
     </ir.noghteh.justifiedtextview.JustifiedTextView>
 
 </ScrollView>
-
+```
 
 ## License
 please inform us if you use this library ( navabi70-at-gmail)
