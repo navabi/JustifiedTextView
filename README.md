@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 
 
 ## License
-please inform us if you use this library ( navabi70@gmail.com)
+please inform us if you use this library ( navabi70-at-gmail)
 
     Copyright 2013 Mohsen Navabi
 
