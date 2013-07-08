@@ -1,6 +1,6 @@
 # JustifiedTextView for Android
 
-This project proviede a view for you that implement justified text view that.
+This project provide a view for android apps that implement justified text view.
 
 ![Screenshot](https://raw.github.com/navabi/JustifiedTextView/master/raw/JustifiedTextView.png)
 
@@ -58,9 +58,9 @@ public class MainActivity extends Activity {
     </ir.noghteh.justifiedtextview.JustifiedTextView>
 
 </ScrollView>
+```
 
-
-## License
+## 4.License
 please inform us if you use this library ( navabi70-at-gmail)
 
     Copyright 2013 Mohsen Navabi
