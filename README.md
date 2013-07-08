@@ -34,8 +34,6 @@ public class MainActivity extends Activity {
 		mJTv.setTypeFace(Typeface.createFromAsset(getAssets(), "fonts/naskh_bold.ttf"));
 
 	}
-	
-
 }
 ```
 
@@ -60,11 +58,8 @@ public class MainActivity extends Activity {
 </ScrollView>
 ```
 
-<<<<<<< HEAD
+
 ## 4.License
-=======
-## License
->>>>>>> d00d08f5d0ae0646e7746ede43ae25d8ea46dac5
 please inform us if you use this library ( navabi70-at-gmail)
 
     Copyright 2013 Mohsen Navabi
