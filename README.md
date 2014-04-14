@@ -41,19 +41,23 @@ public class MainActivity extends Activity {
 ``` xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:noghteh="http://noghteh.ir"
+    
     android:id="@+id/activity_main_jsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ir.noghteh.justifiedtextview.JustifiedTextView
+    <ir.noghteh.JustifiedTextView
         android:id="@+id/activity_main_jtv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:padding="25dp"
-        noghteh:text="@string/test" >
-    </ir.noghteh.justifiedtextview.JustifiedTextView>
+	xmlns:noghteh="http://noghteh.ir"
+        noghteh:text="@string/hello_world"
+        noghteh:textColor="@color/text"
+        noghteh:textSize="18sp"
+       >
+    </ir.noghteh.JustifiedTextView>
 
 </ScrollView>
 ```
