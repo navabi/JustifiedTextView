@@ -24,6 +24,8 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 public class JustifiedTextView extends View {
 	
 	private Context mContext;
+	
+	private XmlToClassAttribHandler mXmlParser;
 		
 	private TextPaint textPaint;
 		
@@ -40,8 +42,8 @@ public class JustifiedTextView extends View {
 	
 	private List<String> lineList=new ArrayList<String>();
 	
-	private String namespace="http://noghteh.ir";
-	private String key="text";
+
+	
 
 	/**
 	 * when we want to draw text after view created to avoid loop in drawing we use this boolean
@@ -65,11 +67,31 @@ public class JustifiedTextView extends View {
 	private void constructor(Context context, AttributeSet attrs) {
 		
 		mContext=context;
-		
+		mXmlParser=new XmlToClassAttribHandler(mContext,attrs);
 		initTextPaint();
 		
-		if (attrs!=null)
-			setText(XmlToClassAttribHandler.GetAttributeStringValue(mContext, attrs, namespace, key, ""));
+		if (attrs!=null){
+			String text;
+			int textColor;
+			int textSize;
+			int textSizeUnit;
+			
+			text=mXmlParser.getTextValue();
+			textColor=mXmlParser.getColorValue();
+			textSize=mXmlParser.getTextSize();
+			textSizeUnit=mXmlParser.gettextSizeUnit();
+			
+			
+			setText(text);
+			setTextColor(textColor);
+			if (textSizeUnit==-1)
+				setTextSize(textSize);
+			else
+				setTextSize(textSizeUnit, textSize);
+			
+//			setText(XmlToClassAttribHandler.GetAttributeStringValue(mContext, attrs, namespace, key, ""));
+			
+		}
 
 		ViewTreeObserver observer=getViewTreeObserver();
 		
@@ -96,7 +118,7 @@ public class JustifiedTextView extends View {
 		});
 
 	}
-	
+
 	private void initTextPaint(){
 		textPaint=new TextPaint(TextPaint.ANTI_ALIAS_FLAG);	
 		textPaint.setTextAlign(Align.RIGHT);
@@ -286,6 +308,12 @@ public class JustifiedTextView extends View {
 		textSize=TypedValue.applyDimension(unit, textSize, mContext.getResources().getDisplayMetrics());
 		getTextPaint().setTextSize(textSize);
 	}
+	
+	
+	private void setTextSize(int textSize) {
+		getTextPaint().setTextSize(textSize);
+	}
+	
 	public TextPaint getTextPaint() {
 		return textPaint;
 	}
