@@ -11,10 +11,17 @@
 # generated files
 bin/
 gen/
+/.settings/org.eclipse.jdt.core.prefs
+/sample/.settings/org.eclipse.jdt.core.prefs
+/sample/bin/
+/sample/gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
+/sample/local.properties
 
 # Eclipse project files
 .classpath
 .project
+/sample/.classpath
+/sample/.project
