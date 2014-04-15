@@ -11,8 +11,10 @@ Android 2.0+ support
 #### 1. Include library
 
 **Manual:**
- * [Download JAR](https://github.com/navabi/JustifiedTextView/raw/master/raw/justifiedtextviewlibrary.jar)
- * Put the JAR in the **libs** subfolder of your Android project
+ * Downlaod the JustifiedTextView Library
+ * Add it to your eclipse workspace
+ * there is a sample project with the library that you can import as well
+ * Go to your project properties and add JustifiedTextView as library
 
 #### 2. Application class
 ``` java
@@ -41,7 +43,6 @@ public class MainActivity extends Activity {
 ``` xml
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    
     android:id="@+id/activity_main_jsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:padding="25dp"
-	xmlns:noghteh="http://noghteh.ir"
+		xmlns:noghteh="http://noghteh.ir"
         noghteh:text="@string/hello_world"
         noghteh:textColor="@color/text"
         noghteh:textSize="18sp"
