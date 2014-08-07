@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="text">#FF5000</color>
+    <color name="red">#F84545</color>
+    <color name="green">#30E35A</color>
+    <color name="blue">#309BE3</color>
+    <color name="gray_1">#E2E2E2</color>
+    <color name="gray_2">#F1F1F1</color>
+    <color name="gray_3">#D2D2D2</color>
+
 </resources>
