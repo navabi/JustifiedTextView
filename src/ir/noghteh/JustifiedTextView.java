@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -34,16 +35,13 @@ public class JustifiedTextView extends View {
 	private int lineHeight;
 	
 	private int textAreaWidth;
-
 	
 	private int measuredViewHeight,measuredViewWidth;
 	
 	private String text;
 	
 	private List<String> lineList=new ArrayList<String>();
-	
 
-	
 
 	/**
 	 * when we want to draw text after view created to avoid loop in drawing we use this boolean
@@ -104,21 +102,24 @@ public class JustifiedTextView extends View {
 				if (hasTextBeenDrown)
 					return;
 				hasTextBeenDrown=true;
-				
 				setTextAreaWidth(getWidth()-(getPaddingLeft()+getPaddingRight()));	
-				
-				lineList=divideOriginalTextToStringLineList(getText());
-				
-				setLineHeight(getTextPaint());
-				
-				setMeasuredDimentions(lineList.size(),getLineHeight(),getLineSpace());
-				measure(getMeasuredViewWidth(),getMeasuredViewHeight());
+				calculate();
 
 			}
+
+
 		});
 
 	}
 
+	private void calculate() {
+		setLineHeight(getTextPaint());
+		lineList.clear();
+		lineList=divideOriginalTextToStringLineList(getText());
+		setMeasuredDimentions(lineList.size(),getLineHeight(),getLineSpace());
+		measure(getMeasuredViewWidth(),getMeasuredViewHeight());
+	}
+	
 	private void initTextPaint(){
 		textPaint=new TextPaint(TextPaint.ANTI_ALIAS_FLAG);	
 		textPaint.setTextAlign(Align.RIGHT);
@@ -162,7 +163,6 @@ public class JustifiedTextView extends View {
 	 * @return
 	 */
 	private List<String> divideOriginalTextToStringLineList(String originalText) {
-
 		
 		List<String> listStringLine=new ArrayList<String>();
 		
@@ -256,8 +256,8 @@ public class JustifiedTextView extends View {
 	private void setLineHeight(TextPaint textPaint) {
 		
 		Rect bounds=new Rect();
-		
-		textPaint.getTextBounds("این حسین کیست که عالم همه دیوانه اوست", 0,("این حسین کیست که عالم همه دیوانه اوست").length(), bounds);
+		String sampleStr="این حسین کیست که عالم همه دیوانه اوست";
+		textPaint.getTextBounds(sampleStr, 0,sampleStr.length(), bounds);
 		
 		setLineHeight(bounds.height());
 		
@@ -278,48 +278,7 @@ public class JustifiedTextView extends View {
 
 		setMeasuredViewWidth(getWidth());
 	}
-		
-
-	public String getText() {
-		return text;
-	}
 	
-	/***
-	 * Sets the string value of the JustifiedTextView. JustifiedTextView does not accept HTML-like formatting. 
-	 * Related XML Attributes
-	 * -noghteh:text
-	 * @param text
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
-	
-	public Typeface getTypeFace() {
-		return getTextPaint().getTypeface();
-	}
-	public void setTypeFace(Typeface typeFace) {
-		getTextPaint().setTypeface(typeFace);
-	}
-	
-	public float getTextSize() {
-		return getTextPaint().getTextSize();
-	}
-	public void setTextSize(int unit,float textSize) {
-		textSize=TypedValue.applyDimension(unit, textSize, mContext.getResources().getDisplayMetrics());
-		getTextPaint().setTextSize(textSize);
-	}
-	
-	
-	private void setTextSize(int textSize) {
-		getTextPaint().setTextSize(textSize);
-	}
-	
-	public TextPaint getTextPaint() {
-		return textPaint;
-	}
-	public void setTextPaint(TextPaint textPaint) {
-		this.textPaint = textPaint;
-	}
 	
 	private int getTextAreaWidth() {
 		return textAreaWidth;
@@ -346,14 +305,71 @@ public class JustifiedTextView extends View {
 	private void setLineHeight(int lineHeight) {
 		this.lineHeight = lineHeight;
 	}
+		
+	public String getText() {
+		return text;
+	}
 	
-//	public int getBackgroundColor() {
-//		return backgroundColor;
-//	}
-//	//
-//	public void setBackgroundColor(int backgroundColor) {
-//		this.backgroundColor = backgroundColor;
-//	}
+	/***
+	 * Sets the string value of the JustifiedTextView. JustifiedTextView does not accept HTML-like formatting. 
+	 * Related XML Attributes
+	 * -noghteh:text
+	 * @param text
+	 */
+	public void setText(String text) {
+		this.text = text;
+		calculate();
+		invalidate();
+	}
+	
+	public void setText(int resid) {
+		setText(mContext.getResources().getString(resid));
+	}
+	
+	public Typeface getTypeFace() {
+		return getTextPaint().getTypeface();
+	}
+	public void setTypeFace(Typeface typeFace) {
+		getTextPaint().setTypeface(typeFace);
+	}
+	
+	public float getTextSize() {
+		return getTextPaint().getTextSize();
+	}
+	public void setTextSize(int unit,float textSize) {
+		textSize=TypedValue.applyDimension(unit, textSize, mContext.getResources().getDisplayMetrics());
+		setTextSize(textSize);
+	}
+	
+	private void setTextSize(float textSize) {
+		getTextPaint().setTextSize(textSize);
+		calculate();
+		invalidate();
+	}
+	
+	public TextPaint getTextPaint() {
+		return textPaint;
+	}
+	public void setTextPaint(TextPaint textPaint) {
+		this.textPaint = textPaint;
+	}
+
+	/***
+	 * set text color
+	 * @param textColor
+	 */
+	public void setTextColor(int textColor) {
+		getTextPaint().setColor(textColor);
+		invalidate();
+	}
+	/***
+	 * define space between lines
+	 * @param lineSpace
+	 */
+	public void setLineSpacing(int lineSpace) {
+		this.lineSpace = lineSpace;
+		invalidate();
+	}
 	
 	/***
 	 * 
@@ -363,13 +379,7 @@ public class JustifiedTextView extends View {
 		return getTextPaint().getColor();
 	}
 	
-	/***
-	 * set text color
-	 * @param textColor
-	 */
-	public void setTextColor(int textColor) {
-		getTextPaint().setColor(textColor);
-	}
+
 	
 	/***
 	 * space between lines - default is 0
@@ -379,14 +389,7 @@ public class JustifiedTextView extends View {
 		return lineSpace;
 	}
 	
-	/***
-	 * define space between lines
-	 * @param lineSpace
-	 */
-	public void setLineSpace(int lineSpace) {
-		this.lineSpace = lineSpace;
-	}
-	
+
 	/***
 	 * get text alignment
 	 * @return
@@ -400,6 +403,7 @@ public class JustifiedTextView extends View {
 	 */
 	public void setAlignment(Align align) {
 		getTextPaint().setTextAlign(align);
+		invalidate();
 	}
 
 
