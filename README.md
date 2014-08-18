@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		mJTv=(JustifiedTextView) findViewById(R.id.activity_main_jtv_text);
 		mJTv.setText(getResources().getString(R.string.test));
 		mJTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
-		mJTv.setLineSpace(15);
+		mJTv.setLineSpacing(15);
 		mJTv.setBackgroundColor(Color.RED);
 		mJTv.setAlignment(Align.LEFT);
 		mJTv.setTypeFace(Typeface.createFromAsset(getAssets(), "fonts/naskh_bold.ttf"));
