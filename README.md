@@ -11,7 +11,7 @@ Android 2.0+ support
 #### 1. Include library
 
 **Manual:**
- * Downlaod the JustifiedTextView Library
+ * Download the JustifiedTextView Library
  * Add it to your eclipse workspace
  * there is a sample project with the library that you can import as well
  * Go to your project properties and add JustifiedTextView as library
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 
 
 ## 4.License
-please inform us if you use this library ( navabi70-at-gmail)
+Please inform us if you use this library ( navabi70-at-gmail)
 
     Copyright 2013-2014 Mohsen Navabi
 
